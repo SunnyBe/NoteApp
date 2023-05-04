@@ -1,0 +1,19 @@
+# .github/workflows/verify-pr.yml
+
+name: Verify every pr branch on every merge
+on:
+  push:
+    branches:
+      - main
+jobs:
+  gradle-build-project:
+    name: Setup environment
+    runs-on: macos-latest
+    steps:
+      - name: Setup JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 11
+      - name: Run gradle clean and build
+        run: ./gradlew clean build
