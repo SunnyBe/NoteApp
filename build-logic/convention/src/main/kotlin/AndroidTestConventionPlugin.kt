@@ -1,8 +1,8 @@
 import com.android.build.gradle.TestExtension
+import com.sunday.noteapp.configureGradleManagedDevices
 import com.sunday.noteapp.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.internal.impldep.com.jcraft.jsch.ConfigRepository.defaultConfig
 
 class AndroidTestConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -15,7 +15,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
             extensions.configure(TestExtension::class.java) {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = 31
-//                configureGradleManagedDevices(this)
+                configureGradleManagedDevices(this)
             }
         }
     }

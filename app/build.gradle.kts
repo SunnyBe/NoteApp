@@ -1,5 +1,10 @@
+import com.sunday.noteapp.NoteAppBuildType
+
 plugins {
-    id("sunday.android.application")
+    id("noteapp.android.application")
+    id("noteapp.android.application.compose")
+    id("noteapp.android.application.flavors")
+    kotlin("kapt")
 }
 
 android {
@@ -17,8 +22,12 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
+            applicationIdSuffix = NoteAppBuildType.DEBUG.applicationIdSuffix
+        }
+        getByName("release") {
             isMinifyEnabled = false
+            applicationIdSuffix = NoteAppBuildType.RELEASE.applicationIdSuffix
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -26,12 +35,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -43,7 +46,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.compose.activity)
-    implementation(platform(libs.androidx.compose.boom))
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.toolingPreview)
@@ -52,7 +55,7 @@ dependencies {
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.test.junit.ext)
     androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.boom))
+    androidTestImplementation(platform(libs.androidx.compose.bom))
 
     androidTestImplementation(libs.androidx.compose.ui.test.junit)
     debugImplementation(libs.androidx.compose.ui.uiTooling)

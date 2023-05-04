@@ -24,8 +24,38 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "sunday.android.application"
+            id = "noteapp.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
+        }
+
+        register("androidCompose") {
+            id = "noteapp.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
+
+        register("androidLibraryCompose") {
+            id = "noteapp.android.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+
+        register("androidLibrary") {
+            id = "noteapp.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
+
+        register("androidFeature") {
+            id = "noteapp.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
+
+        register("androidTest") {
+            id = "noteapp.android.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
+
+        register("androidFlavors") {
+            id = "noteapp.android.application.flavors"
+            implementationClass = "AndroidApplicationFlavorsConventionPlugin"
         }
     }
 }
