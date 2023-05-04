@@ -19,5 +19,8 @@ jobs:
           distribution: 'temurin'
           java-version: 11
 
+      - name: set JAVA_HOME
+        run: export JAVA_HOME="/Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.19-7/x64/Contents/Home"
+
       - name: Run gradle clean and build
         run: ./gradlew clean build
