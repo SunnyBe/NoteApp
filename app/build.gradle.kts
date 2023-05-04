@@ -1,16 +1,14 @@
 plugins {
     id("sunday.android.application")
     alias(libs.plugins.kotlin.android)
+//    alias(libs.plugins.android.application)
 }
 
 android {
     namespace = "com.sunday.noteapp"
-    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.sunday.noteapp"
-//        minSdk = 21
-//        targetSdk = 33
         versionCode = 1
         versionName = "0.0.0"
 
@@ -29,13 +27,7 @@ android {
             )
         }
     }
-//    compileOptions {
-//        sourceCompatibility = JavaVersion.VERSION_1_8
-//        targetCompatibility = JavaVersion.VERSION_1_8
-//    }
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
+
     buildFeatures {
         compose = true
     }
@@ -50,7 +42,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.compose.activity)
