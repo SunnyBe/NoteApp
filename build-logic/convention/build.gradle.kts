@@ -57,5 +57,20 @@ gradlePlugin {
             id = "noteapp.android.application.flavors"
             implementationClass = "AndroidApplicationFlavorsConventionPlugin"
         }
+
+        register("androidHilt") {
+            id = "noteapp.android.dagger.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
+
+        register("androidApplicationJacoco") {
+            id = "noteapp.android.application.jacoco"
+            implementationClass = "AndroidApplicationJacocoConventionPlugin"
+        }
+
+        register("androidLibraryJacoco") {
+            id = "noteapp.android.library.jacoco"
+            implementationClass = "AndroidLibraryJacocoConventionPlugin"
+        }
     }
 }
