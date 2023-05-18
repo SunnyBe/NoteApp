@@ -3,8 +3,9 @@ import com.sunday.noteapp.NoteAppBuildType
 plugins {
     id("noteapp.android.application")
     id("noteapp.android.application.compose")
-    id("noteapp.android.application.flavors")
-    kotlin("kapt")
+//    id("noteapp.android.application.flavors") Include when needed
+    id("noteapp.android.dagger.hilt")
+    id("noteapp.android.application.jacoco")
 }
 
 android {
