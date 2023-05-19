@@ -3,7 +3,7 @@ import com.sunday.noteapp.NoteAppBuildType
 plugins {
     id("noteapp.android.application")
     id("noteapp.android.application.compose")
-//    id("noteapp.android.application.flavors") Include when needed
+    id("noteapp.android.application.flavors")
     id("noteapp.android.dagger.hilt")
     id("noteapp.android.application.jacoco")
 }
@@ -44,6 +44,9 @@ android {
 }
 
 dependencies {
+    // Extra projects
+    implementation(project(":core:cache"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.compose.activity)
@@ -52,6 +55,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.toolingPreview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(libs.timber)
 
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.test.junit.ext)

@@ -25,7 +25,7 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
-google-dagger-hilt-android = {id = "com.google.dagger.hilt.android", version = "2.44"}
+google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version = "2.44" }
 
 [libraries]
 # [Base] Android-Kotlin
@@ -62,3 +62,12 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+
+# Logging
+timber = "com.jakewharton.timber:timber:5.0.1" #TODO reformat
+
+# Datastore
+androidx-datastore-preference-android = "androidx.datastore:datastore-preferences:1.0.0" #TODO reformat
+androidx-datastore-preference-core = "androidx.datastore:datastore-preferences:1.0.0" #TODO reformat
+androidx-datastore-proto-android = "androidx.datastore:datastore:1.0.0" #TODO reformat
+androidx-datastore-proto-core = "androidx.datastore:datastore-core:1.0.0" #TODO reformat
