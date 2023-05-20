@@ -25,18 +25,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         lifecycleScope.launch {
-            mainViewModel.uiState.collectLatest { uiState ->
-                // Dispatch to expected screen based on ui state
-                if (uiState.shouldOnboard) {
-                    OnboardingActivity.startActivityIntent(this@MainActivity)
-                } else {
-                    // Navigate to Landing page
-                    LandingPageActivity.startActivityIntent(this@MainActivity)
-                }
-            }
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                Timber.e(javaClass.name + ":::: App Start count: IsIncrementing?")
-                aggregateDataStore.incrementAppStartCount()
+                mainViewModel.uiState.collectLatest { uiState ->
+                    // Dispatch to expected screen based on ui state
+                    if (uiState.shouldOnboard) {
+                        OnboardingActivity.startActivityIntent(this@MainActivity)
+                    } else {
+                        // Navigate to Landing page
+                        LandingPageActivity.startActivityIntent(this@MainActivity)
+                    }
+                }
             }
         }
     }

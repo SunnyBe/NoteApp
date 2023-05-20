@@ -38,6 +38,9 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.android.material)
 
+    api(libs.androidx.lifecycle.runtime.ktx)
+    api(libs.timber)
+
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.test.junit.ext)
     androidTestImplementation(libs.androidx.test.espresso.core)

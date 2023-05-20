@@ -45,6 +45,7 @@ android {
 
 dependencies {
     // Extra projects
+    implementation(project(":core:common"))
     implementation(project(":core:cache"))
     implementation(project(":feature:onboarding"))
 
@@ -56,8 +57,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.toolingPreview)
     implementation(libs.androidx.compose.material3)
-
-    implementation(libs.timber)
 
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.test.junit.ext)

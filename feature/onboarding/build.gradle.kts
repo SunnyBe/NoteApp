@@ -1,16 +1,14 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    id("noteapp.android.library")
+    id("noteapp.android.dagger.hilt")
+    kotlin("kapt")
 }
 
 android {
     namespace = "com.sunday.onboarding"
-    compileSdk = 33
 
     defaultConfig {
-        minSdk = 21
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -24,13 +22,6 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 
     buildFeatures {
         viewBinding = true
@@ -39,7 +30,9 @@ android {
 
 dependencies {
 
+    implementation(project(":core:common"))
     implementation(project(":core:ui"))
+    implementation(project(":core:cache"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

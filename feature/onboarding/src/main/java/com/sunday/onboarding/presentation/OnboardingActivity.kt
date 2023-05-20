@@ -5,12 +5,24 @@ import android.content.Intent
 import android.os.Bundle
 import android.window.OnBackInvokedDispatcher
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.ViewPager2
+import com.sunday.cache.datastore.AggregateDataStore
 import com.sunday.onboarding.databinding.ActivityOnboardingBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class OnboardingActivity : FragmentActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
+
+    @Inject
+    lateinit var aggregateDataStore: AggregateDataStore
 
     private val onboardingPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
@@ -28,6 +40,13 @@ class OnboardingActivity : FragmentActivity() {
 
         binding.onboardingViewPager.adapter = pagerAdapter
         binding.onboardingViewPager.registerOnPageChangeCallback(onboardingPageChangeCallback)
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                Timber.e(javaClass.name + ":::: App Start count: IsIncrementing?")
+                aggregateDataStore.incrementAppStartCount()
+            }
+        }
     }
 
     @Deprecated("Deprecated in Java")
