@@ -1,7 +1,6 @@
 package com.sunday.noteapp.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
@@ -9,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.sunday.cache.datastore.AggregateDataStore
 import com.sunday.noteapp.landing.LandingPageActivity
+import com.sunday.onboarding.presentation.OnboardingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -28,12 +28,10 @@ class MainActivity : ComponentActivity() {
             mainViewModel.uiState.collectLatest { uiState ->
                 // Dispatch to expected screen based on ui state
                 if (uiState.shouldOnboard) {
-                    // TODO: Navigate to Onboarding screen
-                    Toast.makeText(this@MainActivity, "Should be onboarding", Toast.LENGTH_LONG)
-                        .show()
+                    OnboardingActivity.startActivityIntent(this@MainActivity)
                 } else {
                     // Navigate to Landing page
-                    LandingPageActivity.dispatchLandingActivityIntent(this@MainActivity)
+                    LandingPageActivity.startActivityIntent(this@MainActivity)
                 }
             }
             repeatOnLifecycle(Lifecycle.State.STARTED) {

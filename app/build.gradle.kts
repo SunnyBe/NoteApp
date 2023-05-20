@@ -46,6 +46,7 @@ android {
 dependencies {
     // Extra projects
     implementation(project(":core:cache"))
+    implementation(project(":feature:onboarding"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

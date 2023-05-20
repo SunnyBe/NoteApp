@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="onboarding_titles">
+        <item name="onboarding_first_slide_title">Create free notes and collaborate with your team</item>
+        <item name="onboarding_second_slide_title">Create free notes and collaborate with your team</item>
+        <item name="onboarding_third_slide_title">Create free notes and collaborate with your team</item>
+    </string-array>
+
+    <string-array name="onboarding_contents">
+        <item name="onboarding_first_slide_content">One long ass lorem ipsum is meant to go here. I even thing the title is already long though</item>
+        <item name="onboarding_second_slide_content">One long ass lorem ipsum is meant to go here. I even thing the title is already long though</item>
+        <item name="onboarding_third_slide_content">One long ass lorem ipsum is meant to go here. I even thing the title is already long though</item>
+    </string-array>
+    <string name="app_name">Onboarding</string>
+    <string name="skip_label">skip</string>
+</resources>

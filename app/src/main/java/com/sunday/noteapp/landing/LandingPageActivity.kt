@@ -34,7 +34,7 @@ class LandingPageActivity : ComponentActivity() {
     }
 
     companion object {
-        fun dispatchLandingActivityIntent(
+        fun startActivityIntent(
             context: Context
         ) {
             val intent = Intent(context, LandingPageActivity::class.java)

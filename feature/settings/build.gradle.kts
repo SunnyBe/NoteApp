@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sunday.core.ui"
+    namespace = "com.sunday.settings"
     compileSdk = 33
 
     defaultConfig {
@@ -38,7 +38,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.android.material)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

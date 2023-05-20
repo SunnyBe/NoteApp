@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sunday.core.ui"
+    namespace = "com.sunday.onboarding"
     compileSdk = 33
 
     defaultConfig {
@@ -31,13 +31,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
+    implementation(project(":core:ui"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.android.material)
+    implementation(libs.glide)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

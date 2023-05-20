@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.OnboardingActivity">
+
+    <FrameLayout
+        android:id="@+id/onboarding_slider"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/onboarding_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.viewpager2.widget.ViewPager2>
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
+
+    <LinearLayout
+        android:id="@+id/onboarding_markers_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/skip_ready_button"
+        app:layout_constraintEnd_toStartOf="@+id/skip_ready_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/skip_ready_button">
+
+        <ImageView
+            android:id="@+id/first_circle_iv"
+            android:layout_width="@dimen/onboard_circle_icon"
+            android:layout_height="@dimen/onboard_circle_icon"
+            android:layout_marginEnd="6dp"
+            android:contentDescription="@null"
+            android:src="@drawable/tem_baseline_circle_24" />
+
+        <ImageView
+            android:id="@+id/second_circle_iv"
+            android:layout_width="@dimen/onboard_circle_icon"
+            android:layout_height="@dimen/onboard_circle_icon"
+            android:layout_marginEnd="6dp"
+            android:contentDescription="@null"
+            android:src="@drawable/tem_baseline_circle_24" />
+
+        <ImageView
+            android:id="@+id/third_circle_iv"
+            android:layout_width="@dimen/onboard_circle_icon"
+            android:layout_height="@dimen/onboard_circle_icon"
+            android:layout_marginEnd="6dp"
+            android:contentDescription="@null"
+            android:src="@drawable/tem_baseline_circle_24" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/skip_ready_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/skip_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/onboarding_markers_container"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
