@@ -16,7 +16,7 @@ enum class NoteAppFlavor(val dimension: FlavorDimension, val applicationIdSuffix
 }
 
 internal fun Project.configureFlavors(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
     flavorConfigurationBlock: ProductFlavor.(flavor: NoteAppFlavor) -> Unit = {}
 ) {
     commonExtension.apply {

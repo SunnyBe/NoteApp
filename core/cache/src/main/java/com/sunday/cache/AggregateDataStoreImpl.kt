@@ -10,11 +10,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import javax.inject.Named
 
 class AggregateDataStoreImpl @Inject constructor(
     @ApplicationContext val context: Context,
-    val detailDataStore: DataStore<Preferences>,
-    val userDetailDataStore: DataStore<Preferences>
+    @Named("detail") val detailDataStore: DataStore<Preferences>,
+    @Named("user") val userDetailDataStore: DataStore<Preferences>
 ) : AggregateDataStore {
 
     private val appStartCount = intPreferencesKey("app_start_counter")

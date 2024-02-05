@@ -8,7 +8,7 @@ import org.gradle.kotlin.dsl.getByType
 import java.io.File
 
 internal fun Project.configureAndroidCompose(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
@@ -19,7 +19,7 @@ internal fun Project.configureAndroidCompose(
 
         composeOptions {
             kotlinCompilerExtensionVersion =
-                libs.findVersion("androidxComposeCompiler").get().toString()
+                libs.findVersion("composeCompiler").get().toString()
         }
 
         dependencies {

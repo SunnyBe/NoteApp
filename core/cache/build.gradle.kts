@@ -2,7 +2,6 @@
 plugins {
     id("noteapp.android.library")
     id("noteapp.android.dagger.hilt")
-    kotlin("kapt")
 }
 
 android {

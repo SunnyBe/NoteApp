@@ -8,15 +8,15 @@ class AndroidHiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
-                apply("org.jetbrains.kotlin.kapt") // Move to last
                 apply("com.google.dagger.hilt.android")
+                apply("com.google.devtools.ksp")
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 "implementation"(libs.findLibrary("hilt-android").get())
-                "kapt"(libs.findLibrary("hilt-android-compiler").get())
-                "kaptAndroidTest"(libs.findLibrary("hilt-android-compiler").get())
+                "ksp"(libs.findLibrary("hilt-android-compiler").get())
+                "kspAndroidTest"(libs.findLibrary("hilt-android-compiler").get())
             }
         }
     }
