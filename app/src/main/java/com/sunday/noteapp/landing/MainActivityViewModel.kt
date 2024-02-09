@@ -8,18 +8,18 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 
-class LandingPageViewModel : ViewModel() {
+class MainActivityViewModel : ViewModel() {
 
-    val uiState: StateFlow<LandingPageUiState> = combine(flowOf(1)) { (num) ->
-        LandingPageUiState()
+    val uiState: StateFlow<MainActivityUiState> = combine(flowOf(1)) { (num) ->
+        MainActivityUiState()
     }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = LandingPageUiState()
+            initialValue = MainActivityUiState()
         )
 }
 
-data class LandingPageUiState(
+data class MainActivityUiState(
     val isUserVerified: Boolean = false
 )

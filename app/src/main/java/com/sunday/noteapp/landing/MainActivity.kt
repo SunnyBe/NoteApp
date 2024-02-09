@@ -17,11 +17,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.sunday.common.deeplink.BaseScreen
 import com.sunday.noteapp.ui.theme.NoteAppTheme
 
-class LandingPageActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<LandingPageViewModel>()
+    private val viewModel by viewModels<MainActivityViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,18 +35,16 @@ class LandingPageActivity : ComponentActivity() {
     }
 
     companion object {
-        fun dispatchLandingActivityIntent(
-            context: Context
-        ) {
-            val intent = Intent(context, LandingPageActivity::class.java)
+        fun getIntent(context: Context, baseSelection: BaseScreen = BaseScreen.Home): Intent {
+            val intent = Intent(context, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            context.startActivity(intent)
+            return intent
         }
     }
 }
 
 @Composable
-fun MainScreen(uiState: LandingPageUiState) {
+fun MainScreen(uiState: MainActivityUiState) {
     if (uiState.isUserVerified) {
         Column {
             Snackbar {
