@@ -1,7 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION") // temp fix -> https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.noteapp.android.library)
+    alias(libs.plugins.noteapp.android.hilt)
 }
 
 android {

@@ -46,6 +46,8 @@ android {
 dependencies {
     // Extra projects
     implementation(project(":core:cache"))
+    implementation(project(":core:common"))
+    implementation(project(":feature:note"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
