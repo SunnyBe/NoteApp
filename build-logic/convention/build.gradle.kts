@@ -18,29 +18,35 @@ tasks.withType<KotlinCompile>().configureEach {
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.android.tools.common)
+    compileOnly(libs.firebase.crashlytics.gradlePlugin)
+    compileOnly(libs.firebase.performance.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
+    implementation(libs.truth)
 }
 
 gradlePlugin {
     plugins {
         register("androidApplication") {
             id = "noteapp.android.application"
-            implementationClass = "AndroidApplicationConventionPlugin"
+            implementationClass = "AndroidApplicationPlugin"
         }
 
         register("androidCompose") {
             id = "noteapp.android.application.compose"
-            implementationClass = "AndroidApplicationComposeConventionPlugin"
+            implementationClass = "AndroidApplicationComposePlugin"
         }
 
         register("androidLibraryCompose") {
             id = "noteapp.android.library.compose"
-            implementationClass = "AndroidLibraryComposeConventionPlugin"
+            implementationClass = "AndroidLibraryComposePlugin"
         }
 
         register("androidLibrary") {
             id = "noteapp.android.library"
-            implementationClass = "AndroidLibraryConventionPlugin"
+            implementationClass = "AndroidLibraryPlugin"
         }
 
         register("androidFeature") {
@@ -50,27 +56,27 @@ gradlePlugin {
 
         register("androidTest") {
             id = "noteapp.android.test"
-            implementationClass = "AndroidTestConventionPlugin"
+            implementationClass = "AndroidTestPlugin"
         }
 
         register("androidFlavors") {
             id = "noteapp.android.application.flavors"
-            implementationClass = "AndroidApplicationFlavorsConventionPlugin"
+            implementationClass = "AndroidApplicationFlavorsPlugin"
         }
 
         register("androidHilt") {
             id = "noteapp.android.dagger.hilt"
-            implementationClass = "AndroidHiltConventionPlugin"
+            implementationClass = "AndroidHiltPlugin"
         }
 
         register("androidApplicationJacoco") {
             id = "noteapp.android.application.jacoco"
-            implementationClass = "AndroidApplicationJacocoConventionPlugin"
+            implementationClass = "AndroidApplicationJacocoPlugin"
         }
 
         register("androidLibraryJacoco") {
             id = "noteapp.android.library.jacoco"
-            implementationClass = "AndroidLibraryJacocoConventionPlugin"
+            implementationClass = "AndroidLibraryJacocoPlugin"
         }
     }
 }

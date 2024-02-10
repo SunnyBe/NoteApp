@@ -7,12 +7,12 @@ import com.android.build.api.dsl.ProductFlavor
 import org.gradle.api.Project
 
 enum class FlavorDimension {
-    contentType
+    environmentType
 }
 
 enum class NoteAppFlavor(val dimension: FlavorDimension, val applicationIdSuffix: String? = null) {
-    dev(FlavorDimension.contentType, ".dev"),
-    prod(FlavorDimension.contentType)
+    demo(FlavorDimension.environmentType, ".demo"),
+    prod(FlavorDimension.environmentType)
 }
 
 internal fun Project.configureFlavors(
@@ -20,15 +20,16 @@ internal fun Project.configureFlavors(
     flavorConfigurationBlock: ProductFlavor.(flavor: NoteAppFlavor) -> Unit = {}
 ) {
     commonExtension.apply {
-        flavorDimensions += FlavorDimension.contentType.name
+        flavorDimensions += FlavorDimension.environmentType.name
         productFlavors {
-            NoteAppFlavor.values().forEach { mFlavor ->
-                create(mFlavor.name) {
-                    dimension = mFlavor.dimension.name
-                    flavorConfigurationBlock(mFlavor)
+            NoteAppFlavor.values().forEach { flavor ->
+                create(flavor.name) {
+                    dimension = flavor.dimension.name
+                    flavorConfigurationBlock(flavor)
+                    // Only set application Id suffix for the right extension
                     if (this@apply is ApplicationExtension && this is ApplicationProductFlavor) {
-                        if (mFlavor.applicationIdSuffix != null) {
-                            this.applicationIdSuffix = mFlavor.applicationIdSuffix
+                        if (flavor.applicationIdSuffix != null) {
+                            this.applicationIdSuffix = flavor.applicationIdSuffix
                         }
                     }
                 }

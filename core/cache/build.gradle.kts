@@ -1,11 +1,11 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("noteapp.android.library")
-    id("noteapp.android.dagger.hilt")
+    alias(libs.plugins.noteapp.android.library)
+    alias(libs.plugins.noteapp.android.hilt)
 }
 
 android {
-    namespace = "com.sunday.cache"
+    namespace = "com.sunday.core.cache"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -14,17 +14,15 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.data)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.android.material)
 
-    implementation(libs.androidx.datastore.preference.android)
-    implementation(libs.androidx.datastore.proto.android)
+    implementation(libs.androidx.dataStore.core)
+    implementation(libs.androidx.dataStore.preferences)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-
-    implementation(project(":core:data"))
+    testImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.ext)
+    androidTestImplementation(libs.androidx.test.espresso.core)
 }

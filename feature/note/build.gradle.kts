@@ -1,10 +1,12 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.noteapp.android.feature)
+    alias(libs.plugins.noteapp.android.library.compose)
+    alias(libs.plugins.noteapp.android.library.jacoco)
 }
 
 android {
-    namespace = "com.sunday.note"
+    namespace = "com.sunday.feature.note"
 
     buildTypes {
         release {
@@ -18,5 +20,10 @@ android {
 }
 
 dependencies {
-    androidTestImplementation(libs.androidx.test.ext.junit) // TODO Remove after build-logic fix
+    implementation(projects.core.data)
+
+    testImplementation(libs.hilt.android.testing)
+    testImplementation(projects.core.testing)
+
+    androidTestImplementation(projects.core.testing)
 }

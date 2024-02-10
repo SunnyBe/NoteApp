@@ -1,11 +1,10 @@
 import com.sunday.noteapp.NoteAppBuildType
 
 plugins {
-    id("noteapp.android.application")
-    id("noteapp.android.application.compose")
-    id("noteapp.android.application.flavors")
-    id("noteapp.android.dagger.hilt")
-    id("noteapp.android.application.jacoco")
+    alias(libs.plugins.noteapp.android.application)
+    alias(libs.plugins.noteapp.android.application.compose)
+    alias(libs.plugins.noteapp.android.application.flavors)
+    alias(libs.plugins.noteapp.android.application.jacoco)
 }
 
 android {
@@ -14,7 +13,7 @@ android {
     defaultConfig {
         applicationId = "com.sunday.noteapp"
         versionCode = 1
-        versionName = "0.0.0"
+        versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -41,33 +40,32 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
     // Extra projects
-    implementation(project(":core:cache"))
-    implementation(project(":core:common"))
-    implementation(project(":feature:note"))
+    implementation(projects.core.cache)
+    implementation(projects.core.common)
+    implementation(projects.feature.note)
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.compose.activity)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.toolingPreview)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.ui.util)
+    implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
     implementation(libs.timber)
 
-    testImplementation(libs.junit4)
-    androidTestImplementation(libs.androidx.test.junit.ext)
-    androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-
-    androidTestImplementation(libs.androidx.compose.ui.test.junit)
-    debugImplementation(libs.androidx.compose.ui.uiTooling)
-    debugImplementation(libs.androidx.comopose.ui.test.manifest)
+    testImplementation(libs.androidx.test.core)
+    androidTestImplementation(projects.core.testing)
+    debugImplementation(libs.androidx.compose.ui.testManifest)
 }
 
 val smokeTest: Configuration by configurations.creating {
