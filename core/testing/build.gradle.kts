@@ -1,6 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.noteapp.android.library)
+    alias(libs.plugins.noteapp.android.library.compose)
     alias(libs.plugins.noteapp.android.hilt)
 }
 
@@ -9,12 +10,17 @@ android {
 }
 
 dependencies {
+    api(kotlin("test"))
+    api(libs.androidx.compose.ui.test)
+    api(projects.core.data)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.android.material)
+    debugApi(libs.androidx.compose.ui.testManifest)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.test.rules)
+    implementation(libs.hilt.android.testing)
+    implementation(libs.kotlinx.coroutines.test)
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.robolectric.shadows)
+    implementation(projects.core.common)
 }

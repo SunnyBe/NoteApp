@@ -14,7 +14,9 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Note App"
+rootProject.name = "NoteApp"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS") // make subprojects accessible objects
 include(":app")
 include(":core:common")
 include(":core:ui")

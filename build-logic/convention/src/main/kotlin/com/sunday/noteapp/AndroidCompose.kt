@@ -1,17 +1,15 @@
 package com.sunday.noteapp
 
 import com.android.build.api.dsl.CommonExtension
+import com.sunday.noteapp.utils.libs
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.File
 
 internal fun Project.configureAndroidCompose(
     commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
-    val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
-
     commonExtension.apply {
         buildFeatures {
             compose = true
@@ -19,24 +17,23 @@ internal fun Project.configureAndroidCompose(
 
         composeOptions {
             kotlinCompilerExtensionVersion =
-                libs.findVersion("composeCompiler").get().toString()
+                libs.findVersion("androidxComposeCompiler").get().toString()
         }
 
         dependencies {
-            val bom = libs.findLibrary("androidx-compose-bom").get()
+            val bom = libs.findLibrary("androidx.compose.bom").get()
             add("implementation", platform(bom))
             add("androidTestImplementation", platform(bom))
+            add("implementation", libs.findLibrary("androidx.compose.runtime").get())
         }
     }
 
     // check- https://github.com/androidx/androidx/blob/androidx-main/compose/compiler/design/compiler-metrics.md
-    /* Currently broken
-    tasks.withType<KotlinCompile>().configureEach {
+    tasks.withType(KotlinCompile::class.java).configureEach {
         kotlinOptions {
             freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
         }
     }
-    */
 }
 
 private fun Project.buildComposeMetricsParameters(): List<String> {

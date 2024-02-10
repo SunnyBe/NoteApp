@@ -17,7 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.sunday.common.deeplink.BaseScreen
+import com.sunday.core.common.deeplink.BaseScreen
 import com.sunday.noteapp.ui.theme.NoteAppTheme
 
 class MainActivity : ComponentActivity() {
