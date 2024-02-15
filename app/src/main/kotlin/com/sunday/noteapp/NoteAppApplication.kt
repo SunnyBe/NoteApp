@@ -12,4 +12,13 @@ class NoteAppApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
     }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        Timber.w("$LOG_TAG: This device is low on memory!")
+    }
+
+    companion object {
+        const val LOG_TAG = "NoteApplication"
+    }
 }

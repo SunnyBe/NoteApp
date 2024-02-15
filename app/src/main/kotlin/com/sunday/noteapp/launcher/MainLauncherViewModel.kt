@@ -3,6 +3,7 @@ package com.sunday.noteapp.launcher
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -13,25 +14,21 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
 //    private val userIntroManager: UserIntroManager,
-//    private val recoveryManager: RecoveryManager,
 //    private val authHandler: AppAuthHandler,
 //    private val userRepository: UserRepository
 ) : ViewModel() {
 
     val appInitState: StateFlow<AppInitState> =
         combine(
-            flowOf(true),
-            flowOf(false),
-            flowOf(true),
-        ) { isOnboarded, isRecovering, isAuthed ->
-            if (isOnboarded && !isRecovering && isAuthed) {
-                AppInitState.CanProceed(user = "user-test")
+            onboardingState(),
+            authState()
+        ) { onboardingState, authState ->
+            val isOnboarded = onboardingState is OnboardingState.Completed
+            val isAuthed = authState is AuthState.Authenticated
+            if (isOnboarded && isAuthed) {
+                AppInitState.CanProceed(user = (authState as AuthState.Authenticated).user)
             } else {
-                AppInitState.DoNotProceed(
-                    isOnboarded to OnboardingState.Completed,
-                    isRecovering to RecoveryState.NoRecoveryState,
-                    isAuthed to AuthState.Authenticated("user")
-                )
+                AppInitState.DoNotProceed(onboardingState, authState)
             }
         }.stateIn(
             scope = viewModelScope,
@@ -41,13 +38,15 @@ class MainViewModel @Inject constructor(
 
 }
 
+fun onboardingState(): Flow<OnboardingState> = flowOf(OnboardingState.Completed)
+fun authState(): Flow<AuthState> = flowOf(AuthState.Authenticated("test-user-01"))
+
 sealed interface AppInitState {
     data class CanProceed(val user: String) : AppInitState
     data class DoNotProceed(
-        val isOnboarded: Pair<Boolean, OnboardingState> = false to OnboardingState.NotStarted,
-        val isRecoveryOngoing: Pair<Boolean, RecoveryState> = false to RecoveryState.NoRecoveryState,
-        val isAuthenticated: Pair<Boolean, AuthState> = false to AuthState.Unknown
-    ): AppInitState
+        val onboardingState: OnboardingState = OnboardingState.NotStarted,
+        val authState: AuthState = AuthState.Unknown
+    ) : AppInitState
 }
 
 sealed interface OnboardingState {
@@ -79,33 +78,3 @@ sealed interface AuthState {
     data object NotAuthenticated : AuthState
     data class Authenticated(val user: String) : AuthState // Todo user [User] entity
 }
-
-/*
-MainActivity States
-- OnboardingState
-    - introduce to app
-    - legal consent
-- RestoreState
-    - BackupState [not started, ongoing, completed ]
-    - RestoreState [not started, ongoing, completed]
-- AuthenticationState
-    - User fetch
-        - user payment plan
-        - user configs
-Reasons for AppInitState failure(Not progress)
-- Onboarding:
-    - User Service agreement consent
-    - IsOnboarded
-    - Configs are set
-- Feature Availability
-    - Location based/fetch
-
-Services
-- Feature Availability
-- Location Service
-- Sync Service
-- Notification Service
-- Hint Service
-- Backup Service
-- Authentication Service
- */

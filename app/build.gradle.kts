@@ -19,14 +19,21 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        resourceConfigurations.addAll(listOf("en", "fr", "de"))
     }
 
     buildTypes {
         debug {
             applicationIdSuffix = NoteAppBuildType.DEBUG.applicationIdSuffix
+            isMinifyEnabled = true
+            isShrinkResources = true
+            testProguardFiles(
+                "test-proguard-rules.pro"
+            )
         }
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             applicationIdSuffix = NoteAppBuildType.RELEASE.applicationIdSuffix
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -47,9 +54,9 @@ android {
 }
 
 dependencies {
-    // Extra projects
     implementation(projects.core.cache)
     implementation(projects.core.common)
+    implementation(projects.core.ui)
     implementation(projects.feature.note)
 
     implementation(libs.androidx.core.ktx)

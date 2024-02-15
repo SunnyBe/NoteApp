@@ -2,6 +2,7 @@ package com.sunday.noteapp.landing
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,13 +19,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.sunday.core.common.deeplink.BaseScreen
-import com.sunday.noteapp.ui.theme.NoteAppTheme
+import com.sunday.core.ui.designsystem.theme.NoteAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModels<MainActivityViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val baseSelection =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                intent.getSerializableExtra(EXTRA_BASE_SELECTION, BaseScreen::class.java)
+            } else {
+                intent.getSerializableExtra(EXTRA_BASE_SELECTION)
+            }
         setContent {
             NoteAppTheme {
                 val uiState by viewModel.uiState.collectAsState()
@@ -38,8 +47,11 @@ class MainActivity : ComponentActivity() {
         fun getIntent(context: Context, baseSelection: BaseScreen = BaseScreen.Home): Intent {
             val intent = Intent(context, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra(EXTRA_BASE_SELECTION, baseSelection)
             return intent
         }
+
+        const val EXTRA_BASE_SELECTION = "extra-base-selection"
     }
 }
 
@@ -75,7 +87,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    NoteAppTheme {
+    com.sunday.core.ui.designsystem.theme.NoteAppTheme {
         Greeting("Android")
     }
 }
