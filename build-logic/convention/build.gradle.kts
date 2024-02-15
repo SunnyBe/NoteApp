@@ -51,7 +51,7 @@ gradlePlugin {
 
         register("androidFeature") {
             id = "noteapp.android.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
+            implementationClass = "AndroidFeaturePlugin"
         }
 
         register("androidTest") {

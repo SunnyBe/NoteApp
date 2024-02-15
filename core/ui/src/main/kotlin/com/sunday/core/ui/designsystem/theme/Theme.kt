@@ -1,4 +1,4 @@
-package com.sunday.noteapp.ui.theme
+package com.sunday.core.ui.designsystem.theme
 
 import android.app.Activity
 import android.os.Build

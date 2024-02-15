@@ -7,12 +7,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.core.app.TaskStackBuilder
 import androidx.lifecycle.lifecycleScope
+import com.sunday.feature.note.ui.CreateNoteActivity
 import com.sunday.noteapp.deeplink.AppDeeplinkDispatcher
 import com.sunday.noteapp.landing.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,19 +36,13 @@ class MainLauncherActivity : ComponentActivity() {
     }
 
     private fun processAppInitState(initState: AppInitState.DoNotProceed) {
-        when {
-            !initState.isOnboarded.first -> onboardNewUser(initState.isOnboarded.second)
-            initState.isRecoveryOngoing.first -> continueDataRecovery(
-                initState.isRecoveryOngoing.second
-            )
-
-            !initState.isAuthenticated.first -> requestUserAuthentication(
-                initState.isAuthenticated.second
-            )
-
-            else -> {
-                Timber.d("Illegal State for AppInitState - Do Not proceed!")
-            }
+        if (initState.onboardingState == OnboardingState.NotStarted) {
+            onboardNewUser(initState.onboardingState)
+            return
+        }
+        if (initState.authState == AuthState.NotAuthenticated) {
+            requestUserAuthentication(initState.authState)
+            return
         }
     }
 
@@ -57,6 +51,7 @@ class MainLauncherActivity : ComponentActivity() {
         val targetIntents: Array<Intent> =
             createDeeplinkIntentStack(appIntent)
                 ?: createMainActivityIntent(appIntent)
+
         startActivities(targetIntents)
         finish()
     }
@@ -84,18 +79,13 @@ class MainLauncherActivity : ComponentActivity() {
     }
 
     private fun onboardNewUser(onboardingState: OnboardingState) {
-//        val onboardingIntent = OnboardingActivity.getIntent()
-//        startActivity(onboardingIntent)
-    }
-
-    private fun continueDataRecovery(recoveryState: RecoveryState) {
-//        val dataRecoveryIntent = DataRecoveryActivity.getIntent()
-//        startActivity(dataRecovery)
+//        val intent = CreateNoteActivity.getIntent(this, "onboard")
+//        startActivity(intent)
     }
 
     private fun requestUserAuthentication(authState: AuthState) {
-//        val authIntent = AuthenticationActivity.getIntent()
-//        startActivity(authIntent)
+//        val intent = CreateNoteActivity.getIntent(this, "auth")
+//        startActivity(intent)
     }
 }
 

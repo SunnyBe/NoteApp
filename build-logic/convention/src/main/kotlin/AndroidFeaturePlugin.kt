@@ -6,7 +6,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
 
-class AndroidFeatureConventionPlugin : Plugin<Project> {
+class AndroidFeaturePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
@@ -29,10 +29,9 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("testImplementation", project(":core:testing"))
                 add("androidTestImplementation", kotlin("test"))
                 add("androidTestImplementation", project(":core:testing"))
-//                add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
-//                add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
-//                add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
-//
+                add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
             }
         }
     }
