@@ -87,7 +87,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    com.sunday.core.ui.designsystem.theme.NoteAppTheme {
+    NoteAppTheme {
         Greeting("Android")
     }
 }
