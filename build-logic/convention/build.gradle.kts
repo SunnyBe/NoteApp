@@ -25,6 +25,7 @@ dependencies {
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.room.gradlePlugin)
     implementation(libs.truth)
+    implementation(libs.spotless.plugin.gradle)
 }
 
 gradlePlugin {
@@ -77,6 +78,11 @@ gradlePlugin {
         register("androidLibraryJacoco") {
             id = "noteapp.android.library.jacoco"
             implementationClass = "AndroidLibraryJacocoPlugin"
+        }
+
+        register("androidLibraryLint") {
+            id = "noteapp.android.library.lint"
+            implementationClass = "AndroidLibraryLintPlugin"
         }
     }
 }
