@@ -10,6 +10,7 @@ class AggregateDeeplinkDispatcher @Inject constructor(
 ) : AppDeeplinkDispatcher {
     private val lisOfDispatcher = listOf(noteFeatureDeeplinkDispatcher)
     private val setOfAllowedAuthority = setOf("com.korekt")
+
     override fun dispatchUri(uri: Uri): DeeplinkTaskStack? {
         if (lisOfDispatcher.isEmpty()) return null
         if (!setOfAllowedAuthority.contains(uri.authority)) return null

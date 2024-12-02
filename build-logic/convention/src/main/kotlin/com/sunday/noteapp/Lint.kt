@@ -13,7 +13,7 @@ internal fun Project.configureKtLint(ktlintExtension: KtlintExtension) {
         android.set(true)
         outputToConsole.set(true)
         outputColorName.set("RED")
-        ignoreFailures.set(true)
+        ignoreFailures.set(false)
         enableExperimentalRules.set(true)
         filter {
             exclude("**/generated/**")
@@ -23,5 +23,6 @@ internal fun Project.configureKtLint(ktlintExtension: KtlintExtension) {
 
     dependencies {
         add("ktlintRuleset", libs.findLibrary("ktlint.ruleset.compose").get())
+        add("ktlintRuleset", "com.pinterest.ktlint:ktlint-ruleset-standard:0.41.0")
     }
 }

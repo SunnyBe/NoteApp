@@ -24,8 +24,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
     private val viewModel by viewModels<MainActivityViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val baseSelection =
@@ -40,7 +40,6 @@ class MainActivity : ComponentActivity() {
                 MainScreen(uiState = uiState)
             }
         }
-
     }
 
     companion object {
@@ -56,15 +55,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(uiState: MainActivityUiState) {
+fun MainScreen(uiState: MainActivityUiState, modifier: Modifier = Modifier) {
     if (uiState.isUserVerified) {
-        Column {
+        Column(modifier) {
             Snackbar {
                 Text(text = "You should verify this user!")
             }
             Text(text = "You should verify this user!")
         }
-
     } else {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -86,7 +84,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+private fun GreetingPreview() {
     NoteAppTheme {
         Greeting("Android")
     }
