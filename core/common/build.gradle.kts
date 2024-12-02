@@ -17,3 +17,9 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)
 }
+
+dependencyLocking {
+    lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
+    lockMode = LockMode.STRICT
+    lockAllConfigurations()
+}

@@ -10,12 +10,12 @@ class AndroidApplicationPlugin : Plugin<Project> {
             apply("com.android.application")
             apply("org.jetbrains.kotlin.android")
             apply("noteapp.android.dagger.hilt") // Includes ksp
-            // apply("com.dropbox.dependency-guard") // See-https://github.com/dropbox/dependency-guard
+            apply("noteapp.android.library.lint") // lint all application modules
         }
         val applicationExtension = target.extensions.getByType(ApplicationExtension::class.java)
         target.configureKotlinAndroid(applicationExtension)
         applicationExtension.defaultConfig.targetSdk = 34
         target.configureGradleManagedDevices(applicationExtension)
-        // Consider using ApplicationComponentExtension for printing test apks, and badging as follow up
+        // TODO Consider using ApplicationComponentExtension for printing test apks, and badging as follow up
     }
 }

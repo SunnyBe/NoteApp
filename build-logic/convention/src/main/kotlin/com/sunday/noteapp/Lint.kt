@@ -1,29 +1,28 @@
 package com.sunday.noteapp
 
-import com.diffplug.gradle.spotless.SpotlessExtension
+import com.sunday.noteapp.utils.libs
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.dependencies
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
-internal fun Project.configureSpotlessLint(spotlessExtension: SpotlessExtension) {
-    spotlessExtension.apply {
-        kotlin {
-            target("**/*.kt")
-            targetExclude("**/build/**/*", "**/*.class")
-            ktlint("1.0.1").editorConfigOverride(
-                mapOf("android" to "true"),
-            )
-//            licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
+internal fun Project.configureKtLint(ktlintExtension: KtlintExtension) {
+    ktlintExtension.apply {
+        version.set("1.4.1")
+        debug.set(true)
+        verbose.set(true)
+        android.set(true)
+        outputToConsole.set(true)
+        outputColorName.set("RED")
+        ignoreFailures.set(false)
+        enableExperimentalRules.set(true)
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
         }
-        format("kts") {
-            target("**/*.kts")
-            targetExclude("**/build/**/*.kts")
-            // Look for the first line that doesn't have a block comment (assumed to be the license)
-//            licenseHeaderFile(rootProject.file("spotless/copyright.kts"), "(^(?![\\/ ]\\*).*$)")
-        }
-        format("xml") {
-            target("**/*.xml")
-            targetExclude("**/build/**/*.xml")
-            // Look for the first XML tag that isn't a comment (<!--) or the xml declaration (<?xml)
-//            licenseHeaderFile(rootProject.file("spotless/copyright.xml"), "(<[^!?])")
-        }
+    }
+
+    dependencies {
+        add("ktlintRuleset", libs.findLibrary("ktlint.ruleset.compose").get())
+        add("ktlintRuleset", "com.pinterest.ktlint:ktlint-ruleset-standard:0.41.0")
     }
 }

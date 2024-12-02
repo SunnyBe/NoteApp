@@ -34,3 +34,9 @@ dependencies {
 
     androidTestImplementation(projects.core.testing)
 }
+
+dependencyLocking {
+    lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
+    lockMode = LockMode.STRICT
+    lockAllConfigurations()
+}

@@ -24,3 +24,9 @@ dependencies {
     implementation(libs.robolectric.shadows)
     implementation(projects.core.common)
 }
+
+dependencyLocking {
+    lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
+    lockMode = LockMode.STRICT
+    lockAllConfigurations()
+}

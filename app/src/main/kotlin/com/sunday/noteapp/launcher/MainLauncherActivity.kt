@@ -90,4 +90,3 @@ class MainLauncherActivity : ComponentActivity() {
         private const val TAG = "MainLauncherActivity"
     }
 }
-

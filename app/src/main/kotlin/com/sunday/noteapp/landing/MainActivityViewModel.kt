@@ -12,12 +12,11 @@ class MainActivityViewModel : ViewModel() {
 
     val uiState: StateFlow<MainActivityUiState> = combine(flowOf(1)) { (num) ->
         MainActivityUiState()
-    }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = MainActivityUiState()
-        )
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = MainActivityUiState()
+    )
 }
 
 data class MainActivityUiState(

@@ -17,7 +17,6 @@ class MainViewModel @Inject constructor(
 //    private val authHandler: AppAuthHandler,
 //    private val userRepository: UserRepository
 ) : ViewModel() {
-
     val appInitState: StateFlow<AppInitState> =
         combine(
             onboardingState(),
@@ -35,7 +34,6 @@ class MainViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5_000),
             initialValue = AppInitState.DoNotProceed()
         )
-
 }
 
 fun onboardingState(): Flow<OnboardingState> = flowOf(OnboardingState.Completed)

@@ -28,7 +28,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             testProguardFiles(
-                "test-proguard-rules.pro"
+                "test-proguard-rules.pro",
             )
         }
         getByName("release") {
@@ -71,10 +71,17 @@ dependencies {
     implementation(libs.timber)
 
     testImplementation(libs.androidx.test.core)
+    testImplementation(libs.test.junit)
     androidTestImplementation(projects.core.testing)
     debugImplementation(libs.androidx.compose.ui.testManifest)
 }
 
 val smokeTest: Configuration by configurations.creating {
     extendsFrom(configurations.testImplementation.get())
+}
+
+dependencyLocking {
+    lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
+    lockMode = LockMode.STRICT
+    lockAllConfigurations()
 }

@@ -1,13 +1,21 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     `kotlin-dsl`
+    alias(libs.plugins.lint.ktlint.jlleitschuh) apply true
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
+    }
 }
 
 tasks.withType<KotlinCompile>().configureEach {
@@ -25,7 +33,15 @@ dependencies {
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.room.gradlePlugin)
     implementation(libs.truth)
-    implementation(libs.spotless.plugin.gradle)
+    compileOnly(libs.ktlint.gradle)
+    ktlintRuleset(libs.ktlint.ruleset.compose)
+}
+
+tasks {
+    validatePlugins {
+        enableStricterValidation = true
+        failOnWarning = true
+    }
 }
 
 gradlePlugin {
@@ -85,4 +101,10 @@ gradlePlugin {
             implementationClass = "AndroidLibraryLintPlugin"
         }
     }
+}
+
+dependencyLocking {
+    lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
+    lockMode = LockMode.STRICT
+    lockAllConfigurations()
 }

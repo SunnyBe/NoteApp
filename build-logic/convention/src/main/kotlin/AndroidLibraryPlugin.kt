@@ -15,6 +15,7 @@ class AndroidLibraryPlugin : org.gradle.api.Plugin<Project> {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
                 apply("noteapp.android.dagger.hilt")
+                apply("noteapp.android.library.lint") // lint all library modules
             }
 
             extensions.configure<LibraryExtension> {

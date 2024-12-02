@@ -1,16 +1,15 @@
+import com.sunday.noteapp.configureKtLint
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
-class AndroidLibraryLintPlugin : Plugin<Project> {
+
+internal class AndroidLibraryLintPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("org.jlleitschuh.gradle.ktlint")
-            }
-
-//            extensions.configure<KtlintExtension> {
-//                debug.set(true)
-//            }
+            pluginManager.apply("org.jlleitschuh.gradle.ktlint")
+            configure<KtlintExtension> { configureKtLint(this) }
         }
     }
 }
