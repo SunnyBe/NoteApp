@@ -28,7 +28,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             testProguardFiles(
-                "test-proguard-rules.pro"
+                "test-proguard-rules.pro",
             )
         }
         getByName("release") {

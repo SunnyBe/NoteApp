@@ -15,3 +15,24 @@ plugins {
     alias(libs.plugins.lint.ktlint.jlleitschuh) apply false
  // Setup [Plugin secrets] - https://github.com/google/secrets-gradle-plugin
 }
+
+val quiet: String by project
+
+tasks.register("updateLocks") {
+    group = "dependency locking"
+    description = "Runs --write-locks for all sub-projects"
+
+    doLast {
+        subprojects.forEach { subproject ->
+        println("Running for ${subproject.name}")
+            exec {
+                workingDir = subproject.projectDir
+                val command = mutableListOf("gradle", "dependencies", "--write-locks")
+                if (quiet == "true") {
+                    command.add("--quiet")
+                }
+                commandLine = command
+            }
+        }
+    }
+}
