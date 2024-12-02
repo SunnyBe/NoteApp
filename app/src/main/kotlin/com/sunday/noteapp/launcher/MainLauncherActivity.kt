@@ -7,12 +7,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.core.app.TaskStackBuilder
 import androidx.lifecycle.lifecycleScope
-import com.sunday.feature.note.ui.CreateNoteActivity
 import com.sunday.noteapp.deeplink.AppDeeplinkDispatcher
 import com.sunday.noteapp.landing.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -79,13 +79,15 @@ class MainLauncherActivity : ComponentActivity() {
     }
 
     private fun onboardNewUser(onboardingState: OnboardingState) {
-//        val intent = CreateNoteActivity.getIntent(this, "onboard")
-//        startActivity(intent)
+        Timber.d("$TAG: Onboard new user")
     }
 
     private fun requestUserAuthentication(authState: AuthState) {
-//        val intent = CreateNoteActivity.getIntent(this, "auth")
-//        startActivity(intent)
+        Timber.d("$TAG: Authenticate user")
+    }
+
+    companion object {
+        private const val TAG = "MainLauncherActivity"
     }
 }
 
