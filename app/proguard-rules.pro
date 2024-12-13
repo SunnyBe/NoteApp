@@ -29,3 +29,4 @@
 # For stacktracing/debuging on crash analytics
 -keepattributes LineNumberTable,SourceFile
 -renamesourcefileattribute SourceFile
+-dontwarn com.google.auto.service.AutoService

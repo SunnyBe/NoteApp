@@ -13,7 +13,7 @@ android {
 }
 
 dependencies {
-    testImplementation(libs.androidx.test.core)
+    implementation(projects.core.testing)
     testImplementation(libs.turbine)
 }
 
