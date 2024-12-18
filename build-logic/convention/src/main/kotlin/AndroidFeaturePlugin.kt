@@ -21,14 +21,14 @@ class AndroidFeaturePlugin : Plugin<Project> {
             }
 
             dependencies {
-                add("implementation", project(":core:ui"))
-                add("implementation", project(":core:data"))
-                add("implementation", project(":core:common"))
+                add("implementation", project(":library:design-system"))
+                add("implementation", project(":library:common-config"))
+                add("implementation", project(":library:common-resource"))
 
                 add("testImplementation", kotlin("test"))
-                add("testImplementation", project(":core:testing"))
+                add("testImplementation", project(":library:testing"))
                 add("androidTestImplementation", kotlin("test"))
-                add("androidTestImplementation", project(":core:testing"))
+                add("androidTestImplementation", project(":library:testing"))
                 add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())

@@ -52,10 +52,10 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.cache)
-    implementation(projects.core.common)
-    implementation(projects.core.ui)
+    implementation(projects.library.commonResource)
+    implementation(projects.library.designSystem)
     implementation(projects.feature.note)
+    androidTestImplementation(projects.library.testing)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtimeCompose)
@@ -70,7 +70,6 @@ dependencies {
 
     testImplementation(libs.androidx.test.core)
     testImplementation(libs.test.junit)
-    androidTestImplementation(projects.core.testing)
     debugImplementation(libs.androidx.compose.ui.testManifest)
 }
 

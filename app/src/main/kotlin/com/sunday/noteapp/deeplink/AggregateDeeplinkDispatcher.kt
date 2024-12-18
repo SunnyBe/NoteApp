@@ -1,7 +1,7 @@
 package com.sunday.noteapp.deeplink
 
 import android.net.Uri
-import com.sunday.core.common.deeplink.DeeplinkTaskStack
+import com.sunday.library.common.deeplink.DeeplinkTaskStack
 import com.sunday.feature.note.deeplink.NoteFeatureDeeplinkDispatcher
 import javax.inject.Inject
 

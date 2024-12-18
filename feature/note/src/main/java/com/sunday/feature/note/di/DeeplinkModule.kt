@@ -1,6 +1,6 @@
 package com.sunday.feature.note.di
 
-import com.sunday.core.common.deeplink.DeeplinkDispatcher
+import com.sunday.library.common.deeplink.DeeplinkDispatcher
 import com.sunday.feature.note.deeplink.NoteFeatureDeeplinkDispatcher
 import dagger.Binds
 import dagger.Module
