@@ -4,7 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     `kotlin-dsl`
-    alias(libs.plugins.lint.ktlint.jlleitschuh) apply true
+    alias(libs.plugins.lint.ktlint.jlleitschuh) apply true // Enables the ktlint plugin in convention plugins
+    alias(libs.plugins.lint.detekt.arturbosch) apply true // Enables the detekt plugin in convention plugins
 }
 
 java {
@@ -34,6 +35,7 @@ dependencies {
     compileOnly(libs.room.gradlePlugin)
     implementation(libs.truth)
     compileOnly(libs.ktlint.gradle)
+    compileOnly(libs.detekt.gradle)
     ktlintRuleset(libs.ktlint.ruleset.compose)
 }
 
