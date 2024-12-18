@@ -22,5 +22,8 @@ jobs:
       - name: set JAVA_HOME
         run: echo $JAVA_HOME
 
+      - name: Lint
+        run: ./gradlew clean ktlintCheck # Include detekt later
+
       - name: Run gradle clean and build
         run: ./gradlew clean build

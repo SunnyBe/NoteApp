@@ -24,14 +24,13 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
-            <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/core/cache" />
-            <option value="$PROJECT_DIR$/core/common" />
-            <option value="$PROJECT_DIR$/core/data" />
-            <option value="$PROJECT_DIR$/core/testing" />
-            <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/note" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/library/common-config" />
+            <option value="$PROJECT_DIR$/library/common-resource" />
+            <option value="$PROJECT_DIR$/library/design-system" />
+            <option value="$PROJECT_DIR$/library/testing" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
