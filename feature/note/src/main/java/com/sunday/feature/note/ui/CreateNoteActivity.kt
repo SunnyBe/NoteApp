@@ -11,8 +11,6 @@ class CreateNoteActivity : ComponentActivity() {
     }
 
     companion object {
-        fun getIntent(context: Context, content: String?): Intent {
-            return Intent(context, CreateNoteActivity::class.java)
-        }
+        fun getIntent(context: Context, content: String?): Intent = Intent(context, CreateNoteActivity::class.java)
     }
 }

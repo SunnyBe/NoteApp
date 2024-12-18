@@ -20,7 +20,9 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.data)
+    implementation(projects.library.commonConfig)
+    testImplementation(projects.library.testing)
+    androidTestImplementation(projects.library.testing)
 
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.androidx.compose.bom))
@@ -30,9 +32,6 @@ dependencies {
     implementation(libs.androidx.compose.material3)
 
     testImplementation(libs.hilt.android.testing)
-    testImplementation(projects.core.testing)
-
-    androidTestImplementation(projects.core.testing)
 }
 
 dependencyLocking {

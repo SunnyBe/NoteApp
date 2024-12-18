@@ -7,13 +7,10 @@ lockfile_dir="./gradle/lockfile"
 subprojects=(
     "build-logic:convention"
     ":app"
-    ":core"
-    ":core:cache"
-    ":core:common"
-    ":core:data"
-    ":core:testing"
-    ":core:ui"
-    ":feature"
+    ":library:common-resource"
+    ":library:common-config"
+    ":library:testing"
+    ":library:design-system"
     ":feature:note"
 )
 
@@ -26,6 +23,7 @@ delete_lockfiles() {
       echo "All lockfiles deleted successfully."
     else
       echo "Failed to delete some lockfiles."
+      exit 1
     fi
   else
     echo "Lockfile directory does not exist: $lockfile_dir"
@@ -40,6 +38,7 @@ generate_lockfiles() {
     ./gradlew "$subproject:dependencies" --write-locks
     if [[ $? -ne 0 ]]; then
       echo "Failed to generate lockfile for $subproject"
+      exit 1
     else
       echo "Lockfile generated for $subproject"
     fi
@@ -51,7 +50,6 @@ if [[ "$1" == "--delete" ]]; then
   delete_lockfiles
 else
   echo "Skipping lockfile deletion (use --delete to delete existing lockfiles)."
+  generate_lockfiles
+  echo "Lock files generation for selected modules is complete!"
 fi
-
-generate_lockfiles
-echo "Script execution complete!"

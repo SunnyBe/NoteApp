@@ -18,8 +18,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.sunday.core.common.deeplink.BaseScreen
-import com.sunday.core.ui.designsystem.theme.NoteAppTheme
+import com.sunday.library.common.deeplink.BaseScreen
+import com.sunday.library.ui.designsystem.theme.NoteAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
