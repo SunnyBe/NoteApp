@@ -21,8 +21,7 @@ android {
 
 dependencies {
     implementation(projects.library.commonConfig)
-    testImplementation(projects.library.testing)
-    androidTestImplementation(projects.library.testing)
+    implementation(projects.library.testing)
 
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.androidx.compose.bom))

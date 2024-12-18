@@ -10,7 +10,7 @@ class NoteFeatureDeeplinkDispatcher @Inject constructor(
 ) : DeeplinkDispatcher {
     override fun process(uri: Uri?): DeeplinkTaskStack? {
         val authority = uri?.authority
-        val pathSegment = uri?.pathSegments?.first()
+        // val pathSegment = uri?.pathSegments?.first()
 
         if (authority != "com.korekt") return null
         return null

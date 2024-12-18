@@ -11,7 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class AppModule {
     @Binds
-    abstract fun bindDeeplinkDispatcher(
-        aggregateDeeplinkDispatcher: AggregateDeeplinkDispatcher
-    ): AppDeeplinkDispatcher
+    abstract fun bindDeeplinkDispatcher(aggregateDeeplinkDispatcher: AggregateDeeplinkDispatcher): AppDeeplinkDispatcher
 }

@@ -74,16 +74,17 @@ class MainLauncherActivity : ComponentActivity() {
     }
 
     private fun createMainActivityIntent(intent: Intent?): Array<Intent> {
+        Timber.i("Processing main activity intent: $intent")
         val landingPageIntent = MainActivity.getIntent(this)
         return arrayOf(landingPageIntent)
     }
 
     private fun onboardNewUser(onboardingState: OnboardingState) {
-        Timber.d("$TAG: Onboard new user")
+        Timber.d("$TAG: Onboard new user $onboardingState")
     }
 
     private fun requestUserAuthentication(authState: AuthState) {
-        Timber.d("$TAG: Authenticate user")
+        Timber.d("$TAG: Authenticate user $authState")
     }
 
     companion object {

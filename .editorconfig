@@ -31,6 +31,18 @@ ij_editorconfig_spaces_around_assignment_operators = true
 ktlint_code_style = ktlint_official
 ktlint_standard = enabled
 ktlint_custom-rule-set = enabled
+# Disabled kt rules
+ktlint_standard_trailing-comma-on-call-site = disabled
+ktlint_standard_trailing-comma-on-declaration-site = disabled
+ktlint_standard_blank-line-before-declaration = disabled
+ktlint_standard_class-signature = disabled
+ktlint_standard_function-signature = disabled
+ktlint_standard_no-empty-first-line-in-class-body = disabled
+ktlint_standard_multiline-expression-wrapping = disabled # shitty style
+ktlint_standard_final-newline = disabled # detekt enforces new line at the end of file
+ktlint_standard_annotation = disabled # shitty style
+ktlint_standard_function_naming = enabled
+ktlint_function_naming_ignore_when_annotated_with = Composable
 
 ij_continuation_indent_size = 4
 ij_kotlin_align_in_columns_case_branch = false
@@ -108,17 +120,6 @@ ij_kotlin_while_on_new_line = true
 ij_kotlin_wrap_elvis_expressions = 1
 ij_kotlin_wrap_expression_body_functions = 0
 ij_kotlin_wrap_first_method_in_call_chain = false
-# Disabled kt rules
-ktlint_standard_trailing-comma-on-call-site = disabled
-ktlint_standard_trailing-comma-on-declaration-site = disabled
-ktlint_standard_blank-line-before-declaration = disabled
-ktlint_standard_class-signature = disabled
-ktlint_standard_function-signature = disabled
-ktlint_standard_no-empty-first-line-in-class-body = disabled
-ktlint_standard_multiline-expression-wrapping = disabled
-ktlint_standard_final-newline = disabled
-ktlint_standard_annotation = disabled
-ktlint_standard_function-naming = disabled
 
 [{*.yml,*.yaml}]
 ij_yaml_keep_indents_on_empty_lines = false
