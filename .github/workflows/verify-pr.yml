@@ -2,28 +2,34 @@
 
 name: Verify every pr branch on every merge
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
 jobs:
-  gradle-build-project:
-    name: Setup environment
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    gradle-build-project:
+        name: Setup environment
+        runs-on: macos-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: 17 # AGP 8.0 requires 17
+            -   name: Setup JDK 17
+                uses: actions/setup-java@v3
+                with:
+                    distribution: 'temurin'
+                    java-version: 17 # AGP 8.0 requires 17
 
-      - name: set JAVA_HOME
-        run: echo $JAVA_HOME
+            -   name: set JAVA_HOME
+                run: echo $JAVA_HOME
 
-      - name: Lint
-        run: ./gradlew clean ktlintCheck # Include detekt later
+            -   name: Lint
+                run: ./gradlew clean ktlintCheck detekt
 
-      - name: Run gradle clean and build
-        run: ./gradlew clean build
+            -   name: Unit Test
+                run: ./gradlew clean testDemoDebugUnitTest
+
+            -   name: Assemble Debug
+                run: ./gradlew clean assembleDebug
