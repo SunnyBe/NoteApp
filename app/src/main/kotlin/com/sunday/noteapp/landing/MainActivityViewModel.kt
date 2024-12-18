@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.stateIn
 class MainActivityViewModel : ViewModel() {
 
     val uiState: StateFlow<MainActivityUiState> = combine(flowOf(1)) { (num) ->
-        MainActivityUiState()
+        MainActivityUiState(
+            isUserVerified = false
+        )
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),

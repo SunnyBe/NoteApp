@@ -5,6 +5,7 @@ lockfile_dir="./gradle/lockfile"
 
 # List of subprojects
 subprojects=(
+    "build-logic:convention"
     ":app"
     ":core"
     ":core:cache"

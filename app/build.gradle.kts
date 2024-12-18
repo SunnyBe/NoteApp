@@ -25,20 +25,18 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = NoteAppBuildType.DEBUG.applicationIdSuffix
-            isMinifyEnabled = true
-            isShrinkResources = true
-            testProguardFiles(
-                "test-proguard-rules.pro",
-            )
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
         getByName("release") {
+            applicationIdSuffix = NoteAppBuildType.RELEASE.applicationIdSuffix
             isMinifyEnabled = true
             isShrinkResources = true
-            applicationIdSuffix = NoteAppBuildType.RELEASE.applicationIdSuffix
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            testProguardFiles("test-proguard-rules.pro")
         }
     }
 
