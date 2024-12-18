@@ -24,7 +24,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.test)
     implementation(libs.kotlinx.datetime)
     implementation(libs.robolectric.shadows)
-
 }
 
 dependencyLocking {

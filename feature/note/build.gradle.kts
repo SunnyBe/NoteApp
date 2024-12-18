@@ -32,7 +32,6 @@ dependencies {
     implementation(libs.androidx.compose.material3)
 
     testImplementation(libs.hilt.android.testing)
-
 }
 
 dependencyLocking {

@@ -16,6 +16,3 @@ class NoteFeatureDeeplinkDispatcher @Inject constructor(
         return null
     }
 }
-
-
-
