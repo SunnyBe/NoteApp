@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(uiState: MainActivityUiState, modifier: Modifier = Modifier) {
-    if (uiState.isUserVerified) {
+    if (!uiState.isUserVerified) {
         Column(modifier) {
             Snackbar {
                 Text(text = "You should verify this user!")
