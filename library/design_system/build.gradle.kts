@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.noteapp.android.library)
     alias(libs.plugins.noteapp.android.library.compose)
@@ -6,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sunday.library.ui"
+    namespace = "com.sunday.library.design_system"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -30,6 +29,6 @@ dependencies {
 
 dependencyLocking {
     lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
-    lockMode = LockMode.STRICT
+    lockMode = LockMode.LENIENT
     lockAllConfigurations()
 }

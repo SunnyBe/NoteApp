@@ -1,4 +1,4 @@
-package com.sunday.library.common.deeplink
+package com.sunday.library.service.deeplink
 
 import android.net.Uri
 

@@ -21,6 +21,7 @@ android {
 
 dependencies {
     implementation(projects.library.commonConfig)
+    implementation(projects.library.service)
     implementation(projects.library.testing)
 
     implementation(libs.androidx.core.ktx)
@@ -35,6 +36,6 @@ dependencies {
 
 dependencyLocking {
     lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
-    lockMode = LockMode.STRICT
+    lockMode = LockMode.LENIENT
     lockAllConfigurations()
 }

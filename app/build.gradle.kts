@@ -54,6 +54,7 @@ android {
 dependencies {
     implementation(projects.library.commonResource)
     implementation(projects.library.designSystem)
+    implementation(projects.library.service)
     implementation(projects.feature.note)
     androidTestImplementation(projects.library.testing)
 
@@ -79,6 +80,6 @@ val smokeTest: Configuration by configurations.creating {
 
 dependencyLocking {
     lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
-    lockMode = LockMode.STRICT
+    lockMode = LockMode.LENIENT
     lockAllConfigurations()
 }

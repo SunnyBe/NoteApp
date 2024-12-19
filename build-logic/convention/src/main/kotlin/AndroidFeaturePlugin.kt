@@ -21,7 +21,7 @@ class AndroidFeaturePlugin : Plugin<Project> {
             }
 
             dependencies {
-                add("implementation", project(":library:design-system"))
+                add("implementation", project(":library:design_system"))
                 add("implementation", project(":library:common-config"))
                 add("implementation", project(":library:common-resource"))
 

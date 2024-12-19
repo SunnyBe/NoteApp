@@ -10,7 +10,7 @@ subprojects=(
     ":library:common-resource"
     ":library:common-config"
     ":library:testing"
-    ":library:design-system"
+    ":library:design_system"
     ":feature:note"
 )
 
