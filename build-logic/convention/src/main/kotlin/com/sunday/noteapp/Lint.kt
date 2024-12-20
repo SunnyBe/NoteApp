@@ -28,7 +28,7 @@ internal fun Project.configureKtLint(ktlintExtension: KtlintExtension) {
 
     dependencies {
         add("ktlintRuleset", "ktlint.ruleset.compose".asDependency(this@configureKtLint))
-        add("ktlintRuleset", "com.pinterest.ktlint:ktlint-ruleset-standard:0.41.0")
+        add("ktlintRuleset", "ktlint-ruleset-pintrest-standard".asDependency(this@configureKtLint))
     }
 }
 
@@ -64,6 +64,6 @@ internal fun Project.configureDetekt(detektExtension: DetektExtension) {
     }
 
     dependencies {
-        add("detektPlugins", "ru.kode:detekt-rules-compose:1.4.0")
+        add("detektPlugins", "detekt-ruleset-compose".asDependency(this@configureDetekt))
     }
 }
