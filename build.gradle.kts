@@ -8,11 +8,11 @@ buildscript {
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.android.test) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
-    alias(libs.plugins.kotlin.jvm) apply false // Modules apply kotlin.android if necessary
     alias(libs.plugins.lint.ktlint.jlleitschuh) apply false
     alias(libs.plugins.lint.detekt.arturbosch) apply false
- // Setup [Plugin secrets] - https://github.com/google/secrets-gradle-plugin
+    // Setup [Plugin secrets] - https://github.com/google/secrets-gradle-plugin
 }

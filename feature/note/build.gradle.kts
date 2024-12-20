@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.noteapp.android.feature)
     alias(libs.plugins.noteapp.android.library.compose)
@@ -21,6 +20,7 @@ android {
 
 dependencies {
     implementation(projects.library.commonConfig)
+    implementation(projects.library.service)
     implementation(projects.library.testing)
 
     implementation(libs.androidx.core.ktx)
@@ -35,6 +35,6 @@ dependencies {
 
 dependencyLocking {
     lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
-    lockMode = LockMode.STRICT
+    lockMode = LockMode.LENIENT
     lockAllConfigurations()
 }

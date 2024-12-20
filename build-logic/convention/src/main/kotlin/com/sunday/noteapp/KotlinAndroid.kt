@@ -1,7 +1,7 @@
 package com.sunday.noteapp
 
 import com.android.build.api.dsl.CommonExtension
-import com.sunday.noteapp.utils.libs
+import com.sunday.noteapp.utils.asDependency
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
@@ -33,7 +33,7 @@ internal fun Project.configureKotlinAndroid(
     configureKotlin()
 
     dependencies {
-        add("coreLibraryDesugaring", libs.findLibrary(("android.desugarJdkLibs")).get())
+        add("coreLibraryDesugaring", "android.desugarJdkLibs".asDependency(this@configureKotlinAndroid))
     }
 }
 

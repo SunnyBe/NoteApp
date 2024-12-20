@@ -60,6 +60,8 @@ room = "2.6.1"
 secrets = "2.0.1"
 truth = "1.1.5"
 turbine = "1.0.0"
+junit = "1.2.1"
+material = "1.12.0"
 
 [libraries]
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
@@ -119,8 +121,10 @@ hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hi
 javax-inject = { module = "javax.inject:javax.inject", version = "1" }
 ktlint-gradle = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlintGradle" }
 ktlint-ruleset-compose = { module = "io.nlopez.compose.rules:ktlint", version.ref = "ktlintRulesetCompose" }
+ktlint-ruleset-pintrest-standard = "com.pinterest.ktlint:ktlint-ruleset-standard:0.41.0"
 detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
-test-junit = {module = "junit:junit", version = "4.13.2"}
+detekt-ruleset-compose = "ru.kode:detekt-rules-compose:1.4.0"
+test-junit = { module = "junit:junit", version = "4.13.2" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-guava = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-guava", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
@@ -150,7 +154,9 @@ firebase-performance-gradlePlugin = { group = "com.google.firebase", name = "per
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
-timber = "com.jakewharton.timber:timber:5.0.1" #TODO reformat
+timber = "com.jakewharton.timber:timber:5.0.1"
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" } #TODO reformat
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -168,10 +174,12 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 lint-ktlint-jlleitschuh = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 lint-detekt-arturbosch = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 room = { id = "androidx.room", version.ref = "room" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+jacoco = { id = "org.gradle.jacoco", version.ref = "jacoco" }
 # Plugins defined in the app
 noteapp-android-application = { id = "noteapp.android.application", version = "unspecified" }
 noteapp-android-application-compose = { id = "noteapp.android.application.compose", version = "unspecified" }
@@ -183,8 +191,7 @@ noteapp-android-library-compose = { id = "noteapp.android.library.compose", vers
 noteapp-android-test = { id = "noteapp.android.test", version = "unspecified" }
 noteapp-android-application-jacoco = { id = "noteapp.android.application.jacoco", version = "unspecified" }
 noteapp-android-library-jacoco = { id = "noteapp.android.library.jacoco", version = "unspecified" }
-noteapp-android-library-lint = { id = "noteapp.android.library.lint", version = "unspecified" }
-#noteapp-android-lint = { id = "noteapp.android.lint", version = "unspecified" }
+noteapp-android-lint = { id = "noteapp.android.library.lint", version = "unspecified" }
 #noteapp-android-room = { id = "noteapp.android.room", version = "unspecified" }
 #noteapp-jvm-library = { id = "noteapp.jvm.library", version = "unspecified" }
 

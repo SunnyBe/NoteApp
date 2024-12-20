@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     `kotlin-dsl`
     alias(libs.plugins.lint.ktlint.jlleitschuh) apply true // Enables the ktlint plugin in convention plugins
@@ -25,18 +24,28 @@ tasks.withType<KotlinCompile>().configureEach {
     }
 }
 
+ktlint {
+    version.set("1.4.1")
+    debug.set(true)
+    verbose.set(true)
+    android.set(true)
+    outputToConsole.set(true)
+    outputColorName.set("RED")
+    ignoreFailures.set(false)
+    enableExperimentalRules.set(true)
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
+    }
+}
+
 dependencies {
     compileOnly(libs.android.gradlePlugin)
-    compileOnly(libs.android.tools.common)
-    compileOnly(libs.firebase.crashlytics.gradlePlugin)
-    compileOnly(libs.firebase.performance.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
-    compileOnly(libs.ksp.gradlePlugin)
-    compileOnly(libs.room.gradlePlugin)
-    implementation(libs.truth)
     compileOnly(libs.ktlint.gradle)
     compileOnly(libs.detekt.gradle)
     ktlintRuleset(libs.ktlint.ruleset.compose)
+    detektPlugins(libs.detekt.gradle)
 }
 
 tasks {
@@ -107,6 +116,6 @@ gradlePlugin {
 
 dependencyLocking {
     lockFile = file("${rootProject.projectDir}/gradle/lockfile/${projectDir.name}.lockfile")
-    lockMode = LockMode.STRICT
+    lockMode = LockMode.LENIENT
     lockAllConfigurations()
 }

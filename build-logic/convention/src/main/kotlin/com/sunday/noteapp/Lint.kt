@@ -1,6 +1,6 @@
 package com.sunday.noteapp
 
-import com.sunday.noteapp.utils.libs
+import com.sunday.noteapp.utils.asDependency
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project
@@ -26,8 +26,8 @@ internal fun Project.configureKtLint(ktlintExtension: KtlintExtension) {
     }
 
     dependencies {
-        add("ktlintRuleset", libs.findLibrary("ktlint.ruleset.compose").get())
-        add("ktlintRuleset", "com.pinterest.ktlint:ktlint-ruleset-standard:0.41.0")
+        add("ktlintRuleset", "ktlint.ruleset.compose".asDependency(this@configureKtLint))
+        add("ktlintRuleset", "ktlint-ruleset-pintrest-standard".asDependency(this@configureKtLint))
     }
 }
 
@@ -63,6 +63,6 @@ internal fun Project.configureDetekt(detektExtension: DetektExtension) {
     }
 
     dependencies {
-        add("detektPlugins", "ru.kode:detekt-rules-compose:1.4.0")
+        add("detektPlugins", "detekt-ruleset-compose".asDependency(this@configureDetekt))
     }
 }

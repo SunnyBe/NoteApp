@@ -1,7 +1,7 @@
 package com.sunday.noteapp
 
 import com.android.build.api.variant.AndroidComponentsExtension
-import com.sunday.noteapp.utils.libs
+import com.sunday.noteapp.utils.asVersion
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
 import org.gradle.configurationcache.extensions.capitalized
@@ -23,7 +23,7 @@ private val coverageExclusions = listOf(
 
 internal fun Project.configureJacoco(androidComponentsExtension: AndroidComponentsExtension<*, *, *>) {
     configure<JacocoPluginExtension> {
-        toolVersion = libs.findVersion("jacoco").get().toString()
+        toolVersion = "jacoco".asVersion(this@configureJacoco)
         reportsDirectory.set(layout.buildDirectory.dir("jacoco/jacocoReports"))
         println("Jacoco tool version: $toolVersion Reports dir: ${reportsDirectory.get().asFile.toPath()}")
     }
@@ -60,27 +60,6 @@ internal fun Project.configureJacoco(androidComponentsExtension: AndroidComponen
                 executionData.setFrom(file("$buildDir/jacoco/$testTaskName.exec"))
             }
         jacocoTestReport.dependsOn(reportTask)
-
-        // WIP-include verification enforcement
-//        val jacocoCoverageVerification = tasks.create("jacocoTestCoverageVerification")
-//        val verificationTask = tasks.register(
-//            "${testTaskName}CoverageVerification",
-//            JacocoCoverageVerification::class
-//        ) {
-//            println("Verify test coverage: ${this@register.jacocoClasspath.first()}")
-//            violationRules {
-//                rule {
-//                    limit {
-//                        minimum = "0.9".toBigDecimal()
-//                    }
-//                }
-//            }
-//        }
-//
-//        tasks.withType<JacocoCoverageVerification> {
-//            dependsOn(verificationTask)
-//        }
-
     }
 
     tasks.withType<Test>().configureEach {

@@ -1,4 +1,7 @@
 import com.android.build.gradle.LibraryExtension
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_NOTEAPP_LIBRARY
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_NOTEAPP_LIBRARY_HILT
+import com.sunday.noteapp.utils.asPlugin
 import com.sunday.noteapp.utils.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -6,12 +9,12 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
 
-class AndroidFeaturePlugin : Plugin<Project> {
+internal class AndroidFeaturePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
-                apply("noteapp.android.library")
-                apply("noteapp.android.dagger.hilt")
+                apply(PLUGIN_NOTEAPP_LIBRARY.asPlugin(target))
+                apply(PLUGIN_NOTEAPP_LIBRARY_HILT.asPlugin(target))
             }
             extensions.configure<LibraryExtension> {
                 defaultConfig {
@@ -21,7 +24,7 @@ class AndroidFeaturePlugin : Plugin<Project> {
             }
 
             dependencies {
-                add("implementation", project(":library:design-system"))
+                add("implementation", project(":library:design_system"))
                 add("implementation", project(":library:common-config"))
                 add("implementation", project(":library:common-resource"))
 

@@ -1,14 +1,17 @@
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_DAGGER_HILT
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_KSP
+import com.sunday.noteapp.utils.asPlugin
 import com.sunday.noteapp.utils.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
-class AndroidHiltPlugin : Plugin<Project> {
+internal class AndroidHiltPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
-                apply("com.google.dagger.hilt.android")
-                apply("com.google.devtools.ksp")
+                apply(PLUGIN_KSP.asPlugin(target))
+                apply(PLUGIN_DAGGER_HILT.asPlugin(target))
             }
 
             dependencies {
