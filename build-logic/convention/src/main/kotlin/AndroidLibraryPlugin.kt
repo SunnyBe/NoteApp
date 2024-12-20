@@ -25,9 +25,13 @@ class AndroidLibraryPlugin : org.gradle.api.Plugin<Project> {
                 defaultConfig.targetSdk = 34
                 configureFlavors(this)
 
-                // e.g core_common_<resource name>
+                // e.g library_common_<resource name>
                 resourcePrefix =
-                    path.split("""\W""".toRegex()).drop(1).distinct().joinToString(separator = "_")
+                    path
+                        .split("""\W""".toRegex())
+                        .drop(1)
+                        .distinct()
+                        .joinToString(separator = "_")
                         .lowercase() + "_"
             }
 
@@ -41,5 +45,4 @@ class AndroidLibraryPlugin : org.gradle.api.Plugin<Project> {
             }
         }
     }
-
 }

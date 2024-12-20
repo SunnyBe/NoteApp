@@ -1,7 +1,6 @@
 package com.sunday.noteapp
 
 import com.sunday.noteapp.utils.asDependency
-import com.sunday.noteapp.utils.libs
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project

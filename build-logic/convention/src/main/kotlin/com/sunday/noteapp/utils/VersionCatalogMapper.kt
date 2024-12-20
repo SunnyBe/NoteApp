@@ -14,6 +14,7 @@ internal object VersionCatalogMapper {
     const val PLUGIN_DETEKT = "lint-detekt-arturbosch"
     const val PLUGIN_KSP = "ksp"
     const val PLUGIN_DAGGER_HILT = "hilt"
+
     // NoteApp Plugins
     const val PLUGIN_NOTEAPP_LIBRARY_LINT = "noteapp-android-lint"
     const val PLUGIN_NOTEAPP_LIBRARY = "noteapp-android-library"

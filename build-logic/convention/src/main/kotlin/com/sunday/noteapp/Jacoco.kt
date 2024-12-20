@@ -2,7 +2,6 @@ package com.sunday.noteapp
 
 import com.android.build.api.variant.AndroidComponentsExtension
 import com.sunday.noteapp.utils.asVersion
-import com.sunday.noteapp.utils.libs
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
 import org.gradle.configurationcache.extensions.capitalized

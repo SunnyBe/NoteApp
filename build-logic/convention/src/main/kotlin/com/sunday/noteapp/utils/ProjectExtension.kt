@@ -17,15 +17,22 @@ internal val Project.libs: VersionCatalog
  * Throws an exception if the plugin is not found.
  */
 internal fun String.asPlugin(project: Project): String =
-    project.libs.findPlugin(this).getOrNull()?.orNull?.pluginId
-    ?: throw NoSuchElementException("This plugin ($this) was not declared in version catalog")
+    project.libs
+        .findPlugin(this)
+        .getOrNull()
+        ?.orNull
+        ?.pluginId
+        ?: throw NoSuchElementException("This plugin ($this) was not declared in version catalog")
 
 /**
  * Retrieves the version string for a given alias from the version catalog.
  * Throws an exception if the version is not found or is blank.
  */
 internal fun String.asVersion(project: Project): String {
-    val version = project.libs.findVersion(this).get().toString() // returns empty string for missing version.
+    val version = project.libs
+        .findVersion(this)
+        .get()
+        .toString() // returns empty string for missing version.
     if (version.isBlank()) throw NoSuchElementException("This version ($this) was not declared in version catalog")
     return version
 }
@@ -35,7 +42,11 @@ internal fun String.asVersion(project: Project): String {
  * Throws an exception if the dependency is not found.
  */
 internal fun String.asDependency(project: Project): String {
-    val library = project.libs.findLibrary(this).getOrNull()?.get() ?: throw NoSuchElementException(
-        "This library ($this) was not declared in version catalog")
+    val library = project.libs
+        .findLibrary(this)
+        .getOrNull()
+        ?.get() ?: throw NoSuchElementException(
+        "This library ($this) was not declared in version catalog"
+    )
     return library.toString()
 }
