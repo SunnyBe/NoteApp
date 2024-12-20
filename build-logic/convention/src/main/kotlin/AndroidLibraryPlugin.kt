@@ -3,8 +3,8 @@ import com.android.build.gradle.LibraryExtension
 import com.sunday.noteapp.configureFlavors
 import com.sunday.noteapp.configureKotlinAndroid
 import com.sunday.noteapp.disableUnnecessaryAndroidTests
-import com.sunday.noteapp.utils.libs
-import com.sunday.noteapp.utils.pluginId
+import com.sunday.noteapp.utils.VersionCatalogMapper
+import com.sunday.noteapp.utils.asPlugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
@@ -14,10 +14,10 @@ class AndroidLibraryPlugin : org.gradle.api.Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                libs.findPlugin("android-library").pluginId?.let { apply(it) }
-                libs.findPlugin("kotlin-android").pluginId?.let { apply(it) }
-                libs.findPlugin("noteapp-android-hilt").pluginId?.let { apply(it) }
-                libs.findPlugin("noteapp-android-lint").pluginId?.let { apply(it) }
+                apply(VersionCatalogMapper.PLUGIN_ANDROID_LIBRARY.asPlugin(target))
+                apply(VersionCatalogMapper.PLUGIN_ANDROID_KOTLIN.asPlugin(target))
+                apply(VersionCatalogMapper.PLUGIN_NOTEAPP_LIBRARY_HILT.asPlugin(target))
+                apply(VersionCatalogMapper.PLUGIN_NOTEAPP_LIBRARY_LINT.asPlugin(target))
             }
 
             extensions.configure<LibraryExtension> {

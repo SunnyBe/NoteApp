@@ -11,5 +11,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class DeeplinkModule {
     @Binds
-    abstract fun bindNoteDeeplinkDispatcher(deeplinkDispatcher: NoteFeatureDeeplinkDispatcher): com.sunday.library.service.deeplink.DeeplinkDispatcher
+    abstract fun bindNoteDeeplinkDispatcher(
+        deeplinkDispatcher: NoteFeatureDeeplinkDispatcher
+    ): DeeplinkDispatcher
 }

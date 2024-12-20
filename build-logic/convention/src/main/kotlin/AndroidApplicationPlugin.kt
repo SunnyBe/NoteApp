@@ -1,17 +1,24 @@
 import com.android.build.api.dsl.ApplicationExtension
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_ANDROID_APPLICATION
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_ANDROID_KOTLIN
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_NOTEAPP_LIBRARY_HILT
+import com.sunday.noteapp.utils.VersionCatalogMapper.PLUGIN_NOTEAPP_LIBRARY_LINT
 import com.sunday.noteapp.configureGradleManagedDevices
 import com.sunday.noteapp.configureKotlinAndroid
+import com.sunday.noteapp.utils.asPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-class AndroidApplicationPlugin : Plugin<Project> {
+internal class AndroidApplicationPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target.pluginManager) {
-            apply("com.android.application")
-            apply("org.jetbrains.kotlin.android")
-            apply("noteapp.android.dagger.hilt") // Includes ksp
-            apply("noteapp.android.library.lint") // lint all application modules
+            apply(PLUGIN_ANDROID_APPLICATION.asPlugin(target))
+            apply(PLUGIN_ANDROID_KOTLIN.asPlugin(target))
+            apply(PLUGIN_NOTEAPP_LIBRARY_HILT.asPlugin(target)) // Uses KSP
+            apply(PLUGIN_NOTEAPP_LIBRARY_LINT.asPlugin(target))
         }
+
+
         val applicationExtension = target.extensions.getByType(ApplicationExtension::class.java)
         target.configureKotlinAndroid(applicationExtension)
         applicationExtension.defaultConfig.targetSdk = 34

@@ -1,5 +1,6 @@
 package com.sunday.noteapp
 
+import com.sunday.noteapp.utils.asDependency
 import com.sunday.noteapp.utils.libs
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
@@ -26,7 +27,7 @@ internal fun Project.configureKtLint(ktlintExtension: KtlintExtension) {
     }
 
     dependencies {
-        add("ktlintRuleset", libs.findLibrary("ktlint.ruleset.compose").get())
+        add("ktlintRuleset", "ktlint.ruleset.compose".asDependency(this@configureKtLint))
         add("ktlintRuleset", "com.pinterest.ktlint:ktlint-ruleset-standard:0.41.0")
     }
 }

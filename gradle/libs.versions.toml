@@ -176,6 +176,7 @@ protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 room = { id = "androidx.room", version.ref = "room" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+jacoco = { id = "org.gradle.jacoco", version.ref = "jacoco"}
 # Plugins defined in the app
 noteapp-android-application = { id = "noteapp.android.application", version = "unspecified" }
 noteapp-android-application-compose = { id = "noteapp.android.application.compose", version = "unspecified" }
@@ -187,8 +188,7 @@ noteapp-android-library-compose = { id = "noteapp.android.library.compose", vers
 noteapp-android-test = { id = "noteapp.android.test", version = "unspecified" }
 noteapp-android-application-jacoco = { id = "noteapp.android.application.jacoco", version = "unspecified" }
 noteapp-android-library-jacoco = { id = "noteapp.android.library.jacoco", version = "unspecified" }
-noteapp-android-library-lint = { id = "noteapp.android.library.lint", version = "unspecified" }
-#noteapp-android-lint = { id = "noteapp.android.lint", version = "unspecified" }
+noteapp-android-lint = { id = "noteapp.android.library.lint", version = "unspecified" }
 #noteapp-android-room = { id = "noteapp.android.room", version = "unspecified" }
 #noteapp-jvm-library = { id = "noteapp.jvm.library", version = "unspecified" }
 

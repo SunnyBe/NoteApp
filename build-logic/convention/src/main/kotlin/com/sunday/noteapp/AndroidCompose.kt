@@ -1,7 +1,8 @@
 package com.sunday.noteapp
 
 import com.android.build.api.dsl.CommonExtension
-import com.sunday.noteapp.utils.libs
+import com.sunday.noteapp.utils.asDependency
+import com.sunday.noteapp.utils.asVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -16,15 +17,14 @@ internal fun Project.configureAndroidCompose(
         }
 
         composeOptions {
-            kotlinCompilerExtensionVersion =
-                libs.findVersion("androidxComposeCompiler").get().toString()
+            kotlinCompilerExtensionVersion = "androidxComposeCompiler".asVersion(this@configureAndroidCompose)
         }
 
         dependencies {
-            val bom = libs.findLibrary("androidx.compose.bom").get()
+            val bom = "androidx.compose.bom".asDependency(this@configureAndroidCompose)
             add("implementation", platform(bom))
             add("androidTestImplementation", platform(bom))
-            add("implementation", libs.findLibrary("androidx.compose.runtime").get())
+            add("implementation", "androidx.compose.runtime".asDependency(this@configureAndroidCompose))
         }
     }
 
