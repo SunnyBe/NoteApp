@@ -1,10 +1,9 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.noteapp.android.library)
 }
 
 android {
-    namespace = "com.sunday.library.data"
+    namespace = "com.sunday.library.common.config"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -13,7 +12,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.library.testing)
     testImplementation(libs.turbine)
 }
 

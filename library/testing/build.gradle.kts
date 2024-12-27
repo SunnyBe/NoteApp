@@ -10,6 +10,7 @@ android {
 
 dependencies {
     implementation(projects.library.commonResource)
+    implementation(projects.library.service)
 
     api(kotlin("test"))
     api(libs.bundles.test.basic)
@@ -21,8 +22,6 @@ dependencies {
     implementation(libs.androidx.test.rules)
     implementation(libs.hilt.android.testing)
     implementation(libs.kotlinx.coroutines.test)
-    implementation(libs.kotlinx.datetime)
-    implementation(libs.robolectric.shadows)
 }
 
 dependencyLocking {

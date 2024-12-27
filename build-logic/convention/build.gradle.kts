@@ -34,7 +34,10 @@ ktlint {
     ignoreFailures.set(false)
     enableExperimentalRules.set(true)
     filter {
-        exclude("**/generated/**")
+        exclude(
+            "**/generated/**",
+            "build.gradle.kts" // Exclude due to chain-method-continuation rule
+        )
         include("**/kotlin/**")
     }
 }
@@ -58,27 +61,27 @@ tasks {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "noteapp.android.application"
+            id = libs.plugins.noteapp.android.application.asProvider().get().pluginId
             implementationClass = "AndroidApplicationPlugin"
         }
 
         register("androidCompose") {
-            id = "noteapp.android.application.compose"
+            id = libs.plugins.noteapp.android.application.compose.get().pluginId
             implementationClass = "AndroidApplicationComposePlugin"
         }
 
         register("androidLibraryCompose") {
-            id = "noteapp.android.library.compose"
+            id = libs.plugins.noteapp.android.library.compose.get().pluginId
             implementationClass = "AndroidLibraryComposePlugin"
         }
 
         register("androidLibrary") {
-            id = "noteapp.android.library"
+            id = libs.plugins.noteapp.android.library.asProvider().get().pluginId
             implementationClass = "AndroidLibraryPlugin"
         }
 
         register("androidFeature") {
-            id = "noteapp.android.feature"
+            id = libs.plugins.noteapp.android.feature.get().pluginId
             implementationClass = "AndroidFeaturePlugin"
         }
 
@@ -88,27 +91,27 @@ gradlePlugin {
         }
 
         register("androidFlavors") {
-            id = "noteapp.android.application.flavors"
+            id = libs.plugins.noteapp.android.application.flavors.get().pluginId
             implementationClass = "AndroidApplicationFlavorsPlugin"
         }
 
         register("androidHilt") {
-            id = "noteapp.android.dagger.hilt"
+            id = libs.plugins.noteapp.android.hilt.get().pluginId
             implementationClass = "AndroidHiltPlugin"
         }
 
         register("androidApplicationJacoco") {
-            id = "noteapp.android.application.jacoco"
+            id = libs.plugins.noteapp.android.application.jacoco.get().pluginId
             implementationClass = "AndroidApplicationJacocoPlugin"
         }
 
         register("androidLibraryJacoco") {
-            id = "noteapp.android.library.jacoco"
+            id = libs.plugins.noteapp.android.library.jacoco.get().pluginId
             implementationClass = "AndroidLibraryJacocoPlugin"
         }
 
         register("androidLibraryLint") {
-            id = "noteapp.android.library.lint"
+            id = libs.plugins.noteapp.android.lint.get().pluginId
             implementationClass = "AndroidLibraryLintPlugin"
         }
     }
