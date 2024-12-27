@@ -16,12 +16,12 @@ android {
 dependencies {
     implementation(projects.library.commonResource)
     implementation(projects.library.commonConfig)
-    implementation(projects.library.testing)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
     testImplementation(libs.test.junit)
+    testImplementation(projects.library.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
 }

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sunday.library.common"
+    namespace = "com.sunday.library.common.resource"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
