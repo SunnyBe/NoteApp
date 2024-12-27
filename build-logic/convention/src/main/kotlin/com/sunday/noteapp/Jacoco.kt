@@ -25,7 +25,7 @@ internal fun Project.configureJacoco(androidComponentsExtension: AndroidComponen
     configure<JacocoPluginExtension> {
         toolVersion = "jacoco".asVersion(this@configureJacoco)
         reportsDirectory.set(layout.buildDirectory.dir("jacoco/jacocoReports"))
-        println("Jacoco tool version: $toolVersion Reports dir: ${reportsDirectory.get().asFile.toPath()}")
+        println("Jacoco tool version: $toolVersion Reports dir: ${reportsDirectory.get().asFile}")
     }
 
     val jacocoTestReport = tasks.create("jacocoTestReport")
