@@ -18,8 +18,8 @@ rootProject.name = "NoteApp"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS") // make subprojects accessible objects
 include(":app")
-include(":library:common-resource")
-include(":library:common-config")
+include(":library:common_resource")
+include(":library:common_config")
 include(":library:design_system")
 include(":library:testing")
 include(":feature:note")

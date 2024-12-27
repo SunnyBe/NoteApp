@@ -25,8 +25,8 @@ internal class AndroidFeaturePlugin : Plugin<Project> {
 
             dependencies {
                 add("implementation", project(":library:design_system"))
-                add("implementation", project(":library:common-config"))
-                add("implementation", project(":library:common-resource"))
+                add("implementation", project(":library:common_config"))
+                add("implementation", project(":library:common_resource"))
 
                 add("testImplementation", kotlin("test"))
                 add("testImplementation", project(":library:testing"))

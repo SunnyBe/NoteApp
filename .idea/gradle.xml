@@ -28,8 +28,8 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/note" />
             <option value="$PROJECT_DIR$/library" />
-            <option value="$PROJECT_DIR$/library/common-config" />
-            <option value="$PROJECT_DIR$/library/common-resource" />
+            <option value="$PROJECT_DIR$/library/common_config" />
+            <option value="$PROJECT_DIR$/library/common_resource" />
             <option value="$PROJECT_DIR$/library/design_system" />
             <option value="$PROJECT_DIR$/library/service" />
             <option value="$PROJECT_DIR$/library/testing" />
